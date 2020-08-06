@@ -1,8 +1,0 @@
-@import url(normilaze.css);
-@import url(blocks/header.css);
-@import url(blocks/main.css);
-
-a {
-    color: #000;
-    text-decoration: none !important;
-}
