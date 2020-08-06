@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>[BS]</title>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="header-brand">
+                        <a href="#">BodySense</a>
+                    </div>
+                    <div class="header-option d-flex" v-if="!register_off">
+                        <div class="header-option-notification pr-3">
+                            <a href="#"><img src="assets/img/notifiable.svg" alt="notification" title="notification">
+                            </a>
+                        </div>
+                        <div class="header-option-user">
+                            <a href="#" title="user"><svg width="2em" height="2em" fill="#fff" viewBox="0 0 16 16"
+                                    class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
+                                    <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    <path fill-rule="evenodd"
+                                        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                                </svg></a>
+                        </div>
+                        <div class="wrapper-dropdown-3 pl-3" @click="option_on=!option_on" :class="{'active':option_on}"
+                            tabindex="1">
+                            <img src="assets/img/option.svg" alt="option" title="option">
+                            <ul class="dropdown">
+                                <li><a href="#"></i>Аккаунт</a></li>
+                                <li><a href="#"></i>Найстройки</a></li>
+                                <li @click="register_off = !register_off"><a href="#"></i>Выход</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="header-register" v-else>
+                        <button class="btn-login">Вход</button>
+                        <button class="btn-regist ml-3">Регистрация</button>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <main>
+            <section class="girl-info pt-5">
+                <div class="container">
+                    <div class="account row">
+                        <div class="account-info d-flex col-12">
+                            <div class="account-info-img mr-5">
+                                <img src="assets/img/girl.jpg">
+                            </div>
+
+                            <div class="account-info-addition d-flex flex-column mt-md-5 mt-sm-2">
+                                <div class="account-info-addition-name mb-md-2 pl-2">
+                                    <h2>Elena Mischalenko</h2>
+                                </div>
+                                <div class="account-info-addition-status">
+                                    <p>Люблю жизнь и тебя могу полюбить тоже.</p>
+                                </div>
+                            </div>
+
+                            <div class="account-subscribe mt-5 ml-auto " v-if="!register_off">
+                                <button class="btn" @click="btn_active=!btn_active" v-if=btn_active>Подписаться</button>
+                                <button class="btn btn-active " v-else>Подписка
+                                    оформлена ✔</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="girl-post mt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="girl-post-all col-md-8 col-sm-12 mb-3 pb-5 order-md-first">
+                            <div class="girl-post-all-block">
+                                <div class="girl-post-all-block-info d-flex pt-3">
+                                    <div class="girl-post-img">
+                                        <a href="#">
+                                            <img src="assets/img/girl.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="girl-post-all-block-info-addition pt-md-3 ml-3">
+                                        <span>Elena Mischalenko</span>
+                                        <p class="post-time">2 часа назад</p>
+                                    </div>
+                                </div>
+                                <div class="girl-post-all-block-img mt-3">
+                                    <p class="block_warning" v-if="btn_active">Вы не подписаны</p>
+                                    <img v-bind:class="{'girl-post-all-block-img-block': btn_active}"
+                                        src="assets/img/girl_post.jpg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="girl-post-job col-md-4 col-sm-12 mb-sm-3 order-sm-first">
+                            <div class="girl-post-activity pt-3 pl-3">
+                                <div class="girl-post-activity-info mb-4">
+                                    <h2>37</h2>
+                                    <span>Подписчиков</span>
+                                </div>
+                                <div class="girl-post-activity-info mb-4">
+                                    <h2>1.00$</h2>
+                                    <span>Стоимость подписки</span>
+                                </div>
+                                <div class="girl-post-activity-info mb-4">
+                                    <h2>0.50%/hour</h2>
+                                    <span>Заказать работу</span>
+                                </div>
+                                <button class="btn btn-follow mb-3">+Follow</button>
+                            </div>
+                            <div class="girl-post-projects mt-3 mb-3">
+                                <h4 class="p-3">Работы</h4>
+                                <div class="girl-post-projects-href d-flex justify-content-between p-3">
+                                    <a href="#">Фото в красном купальнике</a>
+                                    <div class="girl-post-projects-href-price">
+                                        <span>0.99$</span>
+                                    </div>
+                                </div>
+                                <div class="girl-post-projects-href d-flex justify-content-between p-3">
+                                    <a href="#">Реклама трусиков Nike</a>
+                                    <div class="girl-post-projects-href-price">
+                                        <span>2.99$</span>
+                                    </div>
+
+                                </div>
+                                <button class="btn btn-follow m-3">Заказать работу</button>
+                            </div>
+                        </div>
+                        <div class="girl-post-all col-md-8 col-sm-12 mb-3 pb-5">
+                            <div class="girl-post-all-block">
+                                <div class="girl-post-all-block-info d-flex pt-3">
+                                    <div class="girl-post-img">
+                                        <a href="#">
+                                            <img src="assets/img/girl.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="girl-post-all-block-info-addition pt-md-3 ml-3">
+                                        <span>Elena Mischalenko</span>
+                                        <p class="post-time">2 часа назад</p>
+                                    </div>
+                                </div>
+                                <div class="girl-post-all-block-img mt-3">
+                                    <p class="block_warning" v-if="btn_active">Вы не подписаны</p>
+                                    <img v-bind:class="{'girl-post-all-block-img-block': btn_active}"
+                                        src="assets/img/girl_post.jpg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="girl-post-all col-md-8 col-sm-12 mb-3 pb-5">
+                            <div class="girl-post-all-block">
+                                <div class="girl-post-all-block-info d-flex pt-3">
+                                    <div class="girl-post-img">
+                                        <a href="#">
+                                            <img src="assets/img/girl.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="girl-post-all-block-info-addition pt-md-3 ml-3">
+                                        <span>Elena Mischalenko</span>
+                                        <p class="post-time">2 часа назад</p>
+                                    </div>
+                                </div>
+                                <div class="girl-post-all-block-img mt-3">
+                                    <p class="block_warning" v-if="btn_active">Вы не подписаны</p>
+                                    <img v-bind:class="{'girl-post-all-block-img-block': btn_active}"
+                                        src="assets/img/girl_post.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
